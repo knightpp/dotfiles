@@ -5,6 +5,9 @@ map alt+h launch --location=hsplit --cwd=current
 map alt+v launch --location=vsplit --cwd=current
 map F7 layout_action rotate
 map F1 toggle_layout stack
+#map alt+z toggle_layout stack
+#map alt+e goto_layout stack
+#map alt+s goto_layout splits
 
 # Move the active window in the indicated direction
 map ctrl+alt+k move_window up
@@ -34,8 +37,7 @@ map alt+n new_tab_with_cwd
 
 # Themes
 font_size 14.0
+include ./theme.conf
 
-# BEGIN_KITTY_THEME
-# Afterglow
-include current-theme.conf
-# END_KITTY_THEME
+scrollback_pager less --chop-long-lines --RAW-CONTROL-CHARS +INPUT_LINE_NUMBER
+#scrollback_pager bat
