@@ -1,0 +1,28 @@
+set shell=/bin/bash
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 1
+
+call plug#begin(stdpath('data') . '/plugged')
+" Extensions to built-in LSP, for example, providing type inlay hints
+Plug 'nvim-lua/lsp_extensions.nvim'
+
+" GUI enhancements
+Plug 'andymass/vim-matchup'
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-commentary'
+call plug#end()
+
+
+ 
+
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+" Add (Neo)Vim's native statusline support.
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
