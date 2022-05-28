@@ -11,7 +11,7 @@ set textwidth=100 " Line wrap (number of cols)
 set showmatch	  " Highlight matching brace
 set signcolumn=number
 set number relativenumber
-set cmdheight=2
+"set cmdheight=2
 set hidden
 set ruler	" Show row and column ruler information
 set undolevels=1000	" Number of undo levels

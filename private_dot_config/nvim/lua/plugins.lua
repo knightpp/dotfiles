@@ -29,13 +29,13 @@ function M.setup()
 		-- Packer can manage itself
 		use 'wbthomason/packer.nvim'
 
-	--	use {
-	--		"rcarriga/nvim-notify",
-	--		event = "VimEnter",
-	--		config = function()
-	--			vim.notify = require "notify"
-	--		end,
-	--	}
+		--	use {
+		--		"rcarriga/nvim-notify",
+		--		event = "VimEnter",
+		--		config = function()
+		--			vim.notify = require "notify"
+		--		end,
+		--	}
 
 		-- Better icons
 		use {
@@ -65,7 +65,7 @@ function M.setup()
 			'neovim/nvim-lspconfig',
 			opt = true,
 			event = "BufReadPre",
-			wants = { "nvim-lsp-installer"},
+			wants = { "nvim-lsp-installer" },
 			requires = { "williamboman/nvim-lsp-installer" },
 			config = function()
 				require("config.lsp").setup()
@@ -88,6 +88,12 @@ function M.setup()
 		-- https://github.com/justinmk/vim-sneak
 		use 'justinmk/vim-sneak'
 
+		use { 'terrortylor/nvim-comment',
+			config = function()
+				require('nvim_comment').setup()
+			end
+		}
+
 		use 'itchyny/lightline.vim'
 
 		use 'machakann/vim-highlightedyank'
@@ -99,7 +105,9 @@ function M.setup()
 
 		use {
 			'lewis6991/gitsigns.nvim',
-			config = function() require('gitsigns').setup() end
+			config = function()
+				require("config.gitsigns").setup()
+			end
 		}
 
 		-- Bootstrap Neovim
