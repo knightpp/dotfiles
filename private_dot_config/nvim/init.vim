@@ -1,10 +1,6 @@
-"set shell=/bin/bash
+set shell=/bin/bash
 
-"filetype plugin indent on
 colorscheme gruvbox
-
-lua require("plugins").setup()
-
 syntax on
 
 " Set systems's clipboard
@@ -32,20 +28,16 @@ set showbreak=+++ " Wrap-broken line prefix
 set shiftwidth=4	" Number of auto-indent spaces
 set softtabstop=4	" Number of spaces per Tab
 set tabstop=4 " tab size = 4 spaces
-
 " Hide unused statusline (replaced by lightline)
 set noshowmode
 
 """""""" remappings / bindings """""""""
-noremap <leader>/ :Commentary<cr>
-" Open FZF
-nmap <leader>f :FZF<return>
 " Use <Tab> and <S-Tab> to navigate through popup menu
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-" clear last search highlighting with ENTER
-" nnoremap <CR> :noh<CR><CR>
 " Clear highlighting on escape in normal mode
 nnoremap <esc> :noh<return><esc>
 nnoremap <esc>^[ <esc>^[
 
+lua require("keymaps").setup()
+lua require("plugins").setup()

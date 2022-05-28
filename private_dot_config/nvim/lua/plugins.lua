@@ -4,8 +4,7 @@ function M.setup()
 	local packer_bootstrap = false
 
 	-- packer.nvim configuration
-	local conf = {
-	}
+	local packerConf = {}
 
 	-- Check if packer.nvim is installed
 	-- Run PackerCompile if there are changes in this file
@@ -112,7 +111,7 @@ function M.setup()
 
 	packer_init()
 	local packer = require "packer"
-	packer.init(conf)
+	packer.init(packerConf)
 	packer.startup(plugins)
 end
 
