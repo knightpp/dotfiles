@@ -2,7 +2,10 @@ local M = {}
 
 function M.setup()
 	require("nvim-treesitter.configs").setup {
-		ensure_installed = "all",
+		ensure_installed = {
+			"dockerfile", "make", "json", "proto", "toml", "yaml", "vim",
+			"bash", "fish", "go", "gomod", "gowork", "lua", "rust", "julia"
+		},
 
 		sync_install = false,
 		-- vim-matchup
