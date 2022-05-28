@@ -2,9 +2,7 @@ local M = {}
 
 function M.setup()
 	require("nvim-treesitter.configs").setup {
-		ensure_installed = {
-			"lua", "go",
-		},
+		ensure_installed = "all",
 
 		sync_install = false,
 		-- vim-matchup
