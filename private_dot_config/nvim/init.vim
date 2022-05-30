@@ -1,6 +1,6 @@
 set shell=/bin/bash
 
-colorscheme gruvbox
+colorscheme gruvbox-material
 syntax on
 
 " Set systems's clipboard

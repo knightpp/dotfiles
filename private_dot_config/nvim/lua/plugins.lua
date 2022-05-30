@@ -4,7 +4,13 @@ function M.setup()
 	local packer_bootstrap = false
 
 	-- packer.nvim configuration
-	local packerConf = {}
+	local packer_conf = {
+		display = {
+			open_fn = function()
+				return require("packer.util").float { border = "rounded" }
+			end,
+		},
+	}
 
 	-- Check if packer.nvim is installed
 	-- Run PackerCompile if there are changes in this file
@@ -29,14 +35,6 @@ function M.setup()
 		-- Packer can manage itself
 		use 'wbthomason/packer.nvim'
 
-		--	use {
-		--		"rcarriga/nvim-notify",
-		--		event = "VimEnter",
-		--		config = function()
-		--			vim.notify = require "notify"
-		--		end,
-		--	}
-
 		-- Better icons
 		use {
 			"kyazdani42/nvim-web-devicons",
@@ -46,14 +44,9 @@ function M.setup()
 			end,
 		}
 
-		-- Better Comment
-		--use {
-		--	"numToStr/Comment.nvim",
-		--	keys = { "gc", "gcc", "gbc" },
-		--	config = function()
-		--		require("Comment").setup {}
-		--	end,
-		--}
+		use { 'ibhagwan/fzf-lua',
+			requires = { 'kyazdani42/nvim-web-devicons' }
+		}
 
 		-- Automatically closes brackets
 		use 'rstacruz/vim-closer'
@@ -72,6 +65,14 @@ function M.setup()
 			end,
 		}
 
+		-- WhichKey
+		use {
+			"folke/which-key.nvim",
+			config = function()
+				require("config.whichkey").setup()
+			end,
+		}
+
 		-- Treesitter
 		use {
 			'nvim-treesitter/nvim-treesitter',
@@ -81,6 +82,14 @@ function M.setup()
 			config = function()
 				require("config.treesitter").setup()
 			end,
+		}
+
+		use {
+			'goolord/alpha-nvim',
+			requires = { 'kyazdani42/nvim-web-devicons' },
+			config = function()
+				require 'alpha'.setup(require 'alpha.themes.startify'.config)
+			end
 		}
 
 		use { 'tpope/vim-surround', event = "InsertEnter" }
@@ -99,7 +108,7 @@ function M.setup()
 		use 'machakann/vim-highlightedyank'
 
 		-- Theme
-		use 'morhetz/gruvbox'
+		use 'sainnhe/gruvbox-material'
 
 		use { 'andymass/vim-matchup', event = 'VimEnter' }
 
@@ -119,7 +128,7 @@ function M.setup()
 
 	packer_init()
 	local packer = require "packer"
-	packer.init(packerConf)
+	packer.init(packer_conf)
 	packer.startup(plugins)
 end
 
