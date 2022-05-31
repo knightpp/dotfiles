@@ -65,6 +65,11 @@ function M.setup()
 			end,
 		}
 
+		use {
+			'prettier/vim-prettier',
+			run = 'yarn install --frozen-lockfile --production',
+		}
+
 		-- WhichKey
 		use {
 			"folke/which-key.nvim",

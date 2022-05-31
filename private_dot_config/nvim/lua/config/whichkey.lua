@@ -23,6 +23,7 @@ function M.setup()
 		["w"] = { "<cmd>update!<CR>", "Save" },
 		["q"] = { "<cmd>q!<CR>", "Quit" },
 
+		p = { "<Cmd>:PrettierAsync<Cr>", "Format with Prettier"},
 		f = { "<Cmd>FzfLua files<Cr>", "Open FZF with files"},
 
 		b = {
