@@ -1,4 +1,5 @@
 local M = {}
+local vim = vim
 
 function M.setup()
 	local packer_bootstrap = false
