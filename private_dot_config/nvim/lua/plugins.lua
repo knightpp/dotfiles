@@ -33,11 +33,28 @@ function M.setup()
 	end
 
 	local function plugins(use)
-		-- Packer can manage itself
-		use 'wbthomason/packer.nvim'
+		local function use_plugin(args)
+			local vscode = args["vscode"] ~= nil
+			if vscoed then
+				args.vscode = nil
+			end
+
+			if vim.g.vscode then
+				if vscode then
+					use(args)
+				end
+			else
+				use(args)
+			end
+		end
+
+		use_plugin {
+			'wbthomason/packer.nvim',
+			vscode = true,
+		}
 
 		-- Better icons
-		use {
+		use_plugin {
 			"kyazdani42/nvim-web-devicons",
 			module = "nvim-web-devicons",
 			config = function()
@@ -45,17 +62,25 @@ function M.setup()
 			end,
 		}
 
-		use { 'ibhagwan/fzf-lua',
-			requires = { 'kyazdani42/nvim-web-devicons' }
+		use_plugin {
+			'ibhagwan/fzf-lua',
+			requires = { 'kyazdani42/nvim-web-devicons' },
+			vscode = true,
 		}
 
 		-- Automatically closes brackets
-		use 'rstacruz/vim-closer'
+		use_plugin {
+			'rstacruz/vim-closer',
+			vscode = true,
+		}
+
 		-- Copilot
-		use 'github/copilot.vim'
+		use_plugin 'github/copilot.vim'
+
 		-- lsp configs
-		use 'williamboman/nvim-lsp-installer'
-		use {
+		use_plugin 'williamboman/nvim-lsp-installer'
+
+		use_plugin {
 			'neovim/nvim-lspconfig',
 			opt = true,
 			event = "BufReadPre",
@@ -66,21 +91,22 @@ function M.setup()
 			end,
 		}
 
-		use {
+		use_plugin {
 			'prettier/vim-prettier',
 			run = 'yarn install --frozen-lockfile --production',
 		}
 
 		-- WhichKey
-		use {
+		use_plugin {
 			"folke/which-key.nvim",
 			config = function()
 				require("config.whichkey").setup()
 			end,
+			vscode = true,
 		}
 
 		-- Treesitter
-		use {
+		use_plugin {
 			'nvim-treesitter/nvim-treesitter',
 			opt = true,
 			event = "BufRead",
@@ -90,7 +116,7 @@ function M.setup()
 			end,
 		}
 
-		use {
+		use_plugin {
 			'goolord/alpha-nvim',
 			requires = { 'kyazdani42/nvim-web-devicons' },
 			config = function()
@@ -98,27 +124,42 @@ function M.setup()
 			end
 		}
 
-		use { 'tpope/vim-surround', event = "InsertEnter" }
-
-		-- https://github.com/justinmk/vim-sneak
-		use 'justinmk/vim-sneak'
-
-		use { 'terrortylor/nvim-comment',
-			config = function()
-				require('nvim_comment').setup()
-			end
+		use_plugin {
+			'tpope/vim-surround',
+			event = "InsertEnter",
+			vscode = true,
 		}
 
-		use 'itchyny/lightline.vim'
+		use_plugin {
+			'justinmk/vim-sneak',
+			vscode = true,
+		}
 
-		use 'machakann/vim-highlightedyank'
+		use_plugin {
+			'terrortylor/nvim-comment',
+			config = function()
+				require('nvim_comment').setup()
+			end,
+			vscode = true,
+		}
+
+		use_plugin 'itchyny/lightline.vim'
+
+		use_plugin {
+			'machakann/vim-highlightedyank',
+			vscode = true,
+		}
 
 		-- Theme
-		use 'sainnhe/gruvbox-material'
+		use_plugin 'sainnhe/gruvbox-material'
 
-		use { 'andymass/vim-matchup', event = 'VimEnter' }
+		use_plugin {
+			'andymass/vim-matchup',
+			event = 'VimEnter',
+			vscode = true,
+		}
 
-		use {
+		use_plugin {
 			'lewis6991/gitsigns.nvim',
 			config = function()
 				require("config.gitsigns").setup()
