@@ -34,9 +34,9 @@ function M.setup()
 
 	local function plugins(use)
 		local function use_plugin(args)
-			local vscode = args["vscode"] ~= nil
-			if vscode then
-				args.vscode = nil
+			local vscode = false
+			if type(args) == "table" then
+				vscode = args.vscode or false
 			end
 
 			if vim.g.vscode then
@@ -73,9 +73,6 @@ function M.setup()
 			'rstacruz/vim-closer',
 			vscode = true,
 		}
-
-		-- Copilot
-		use_plugin 'github/copilot.vim'
 
 		-- lsp configs
 		use_plugin 'williamboman/nvim-lsp-installer'
@@ -178,3 +175,5 @@ function M.setup()
 	packer.init(packer_conf)
 	packer.startup(plugins)
 end
+
+return M
