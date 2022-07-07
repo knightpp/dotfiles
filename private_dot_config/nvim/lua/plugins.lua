@@ -35,7 +35,7 @@ function M.setup()
 	local function plugins(use)
 		local function use_plugin(args)
 			local vscode = args["vscode"] ~= nil
-			if vscoed then
+			if vscode then
 				args.vscode = nil
 			end
 
@@ -178,5 +178,3 @@ function M.setup()
 	packer.init(packer_conf)
 	packer.startup(plugins)
 end
-
-return M
