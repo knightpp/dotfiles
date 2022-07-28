@@ -1,5 +1,7 @@
 local M = {}
 
+local vim = vim
+
 function M.setup()
 	require('gitsigns').setup {
 		on_attach = function(bufnr)

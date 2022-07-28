@@ -34,23 +34,35 @@ function M.setup()
 
 	local function plugins(use)
 		local function use_plugin(args)
-			local vscode = false
-			if type(args) == "table" then
-				vscode = args.vscode or false
-			end
-
-			if vim.g.vscode then
-				if vscode then
-					use(args)
-				end
-			else
-				use(args)
-			end
+			use(args)
+			-- local vscode = false
+			-- if type(args) == "table" then
+			-- 	vscode = args.vscode or false
+			-- end
+			--
+			-- if vim.g.vscode then
+			-- 	if vscode then
+			-- 		use(args)
+			-- 	end
+			-- else
+			-- 	use(args)
+			-- end
 		end
 
 		use_plugin {
 			'wbthomason/packer.nvim',
 			vscode = true,
+		}
+
+		use_plugin {
+			'kyazdani42/nvim-tree.lua',
+			requires = {
+				'kyazdani42/nvim-web-devicons',
+			},
+			tag = 'nightly',
+			config = function()
+				require("nvim-tree").setup()
+			end,
 		}
 
 		-- Better icons
@@ -66,6 +78,15 @@ function M.setup()
 			'ibhagwan/fzf-lua',
 			requires = { 'kyazdani42/nvim-web-devicons' },
 			vscode = true,
+			config = function()
+				require("fzf-lua").setup {
+					files = {
+						find_opts = [[-type f -not -path '*/\.git/*' -not -path '*/node_modules/*' -not -path '*/vendor/*' -printf '%P\n']],
+						rg_opts   = "--color=never --files --hidden --follow -g '!{.git,node_modules,vendor}'",
+						fd_opts   = "--color=never --type f --hidden --follow --exclude '{.git,node_modules,vendor}'",
+					}
+				}
+			end
 		}
 
 		-- Automatically closes brackets
