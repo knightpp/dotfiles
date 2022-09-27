@@ -1,9 +1,9 @@
 local M = {}
 local vim = vim
 local servers = {
-	gopls = {},
-	sumneko_lua = {},
-	pyright = {},
+	-- gopls = {},
+	-- sumneko_lua = {},
+	-- pyright = {},
 }
 
 --local lsp_signature = require "lsp_signature"
