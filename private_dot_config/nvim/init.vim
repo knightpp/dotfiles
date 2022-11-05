@@ -6,6 +6,6 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 nnoremap <esc> :noh<return><esc>
 nnoremap <esc>^[ <esc>^[
  
-lua require("settings").setup()
-lua require("keymaps").setup()
-lua require("plugins").setup()
+" lua require("settings").setup()
+" lua require("keymaps").setup()
+" lua require("plugins").setup()
