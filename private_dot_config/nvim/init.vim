@@ -5,6 +5,8 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 " Clear highlighting on escape in normal mode
 nnoremap <esc> :noh<return><esc>
 nnoremap <esc>^[ <esc>^[
+
+set clipboard+=unnamedplus
  
 " lua require("settings").setup()
 " lua require("keymaps").setup()
