@@ -4,7 +4,7 @@ local map = require("utils").map
 local vim = vim
 
 function M.setup()
-	if not vim.g.vscode then
+	if vim.g.vscode then
 		vim.cmd([[
 		    " Better Navigation
 			nnoremap <silent> <C-j> :call VSCodeNotify('workbench.action.navigateDown')<CR>

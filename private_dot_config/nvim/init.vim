@@ -6,8 +6,8 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 nnoremap <esc> :noh<return><esc>
 nnoremap <esc>^[ <esc>^[
 
-set clipboard+=unnamedplus
+" set clipboard+=unnamedplus
  
-" lua require("settings").setup()
-" lua require("keymaps").setup()
-" lua require("plugins").setup()
+lua require("settings").setup()
+lua require("keymaps").setup()
+lua require("plugins").setup()
