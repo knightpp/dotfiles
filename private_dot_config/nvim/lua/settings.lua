@@ -2,17 +2,12 @@ local M = {}
 local vim = vim
 
 function M.setup()
-	if not vim.g.vscode then
-		vim.cmd([[
-			set shell=/bin/bash
-			colorscheme gruvbox-material
-			syntax on
-		]])
-	end
-
 	vim.cmd([[
+		set shell=/bin/bash
+		colorscheme gruvbox-material
+		syntax on
 		" Set systems's clipboard
-		set clipboard+=unnamedplus
+		set clipboard=unnamedplus
 		set completeopt=menuone,noinsert,noselect
 		" set shortmess+=c
 		" set textwidth=100 " Line wrap (number of cols)
